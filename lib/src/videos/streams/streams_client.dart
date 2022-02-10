@@ -226,6 +226,6 @@ class StreamsClient {
   }
 
   /// Gets the actual stream which is identified by the specified metadata.
-  Stream<List<int>> get(StreamInfo streamInfo) =>
-      _httpClient.getStream(streamInfo);
+  Stream<List<int>> get(StreamInfo streamInfo, int start) =>
+      _httpClient.getStream(streamInfo, start: start);
 }
