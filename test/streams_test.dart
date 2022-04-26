@@ -80,7 +80,7 @@ void main() {
         var manifest = await yt!.videos.streamsClient.getManifest(val);
         for (final streamInfo in manifest.streams) {
           print('Stream: ${streamInfo.tag}');
-          expect(yt!.videos.streamsClient.get(streamInfo).first, completes);
+          expect(yt!.videos.streamsClient.get(streamInfo,0).first, completes);
         }
       }, timeout: const Timeout(Duration(minutes: 5)));
     }
