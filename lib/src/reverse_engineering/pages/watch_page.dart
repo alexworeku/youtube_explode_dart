@@ -119,10 +119,11 @@ class WatchPage extends YoutubePage<_InitialData> {
         super(parser.parse(raw), (root) => _InitialData(root));
 
   ///
-  static Future<WatchPage> get(YoutubeHttpClient httpClient, String videoId) {
+  static Future<WatchPage> get(YoutubeHttpClient httpClient, String videoId,
+      {Map<String, String>? headers}) {
     final url = 'https://youtube.com/watch?v=$videoId&bpctr=9999999999&hl=en';
     return retry(httpClient, () async {
-      var req = await httpClient.get(url, validate: true);
+      var req = await httpClient.get(url, validate: true, headers: headers);
 
       var cookies = req.headers['set-cookie']!;
       var visitorInfoLive = _visitorInfoLiveExp.firstMatch(cookies)?.group(1);
